@@ -56,3 +56,32 @@ a:active {
 .blockquote-footer {
   margin: 100px;
 }
+
+.vote-tally-box {
+  background-color: rgb(236, 236, 236);
+  padding: 4.1px;
+  padding-bottom: 4.3px;
+  border: 2px solid;
+  border-color: rgb(85, 85, 85) black black rgb(85, 85, 85);
+}
+
+#vote-tally-box-error {
+  background-color: rgb(255, 255, 255);
+  border-color: rgb(182, 182, 182);
+  color: red;
+}
+
+.spinner-border-sm {
+  margin: inherit;
+  padding: inherit;
+  margin-right: 1.8px;
+}
+
+#err-msg {
+  color: red;
+  margin-bottom: 0em;
+  margin-top: 5px;
+  border-bottom: 0em;
+  padding-bottom: 0em;
+  font-size: 0.8rem;
+}

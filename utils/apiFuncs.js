@@ -37,4 +37,26 @@ function getArticleComments(articleId) {
     })
 }
 
-export { getArticles, getSingleArticle, getArticleComments }
+function updateArticleVotes(articleId, newVote) {
+  const voteObj = {
+    inc_votes: newVote,
+  }
+  const idString = articleId.toString()
+
+  return apiArticlesClient
+    .patch(idString, voteObj)
+    .then(
+      ({
+        data: {
+          article: { votes },
+        },
+      }) => {
+        return votes
+      }
+    )
+    .catch((err) => {
+      return err
+    })
+}
+
+export { getArticles, getSingleArticle, getArticleComments, updateArticleVotes }
