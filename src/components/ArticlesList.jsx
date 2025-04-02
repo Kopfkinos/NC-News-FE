@@ -11,19 +11,19 @@ export default function ArticlesList() {
 
   useEffect(() => {
     setIsLoading(true)
-    getArticles().then((data) => {
+    getArticles().then(({ data }) => {
       setArticles(data.articles)
       setIsLoading(false)
     })
   }, [])
 
-  //   const [data, isLoading, error] = useApiFunction(getArticles)
+  // const [data, isLoading, error] = useApiFunction(getArticles)
 
   if (isLoading) {
     return (
-      <>
-        <Spinner className="spinners" animation="border" />
-      </>
+      <div className="parent">
+        <Spinner className="spinner" animation="border" variant="danger" />
+      </div>
     )
   } else {
     return (
