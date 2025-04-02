@@ -4,8 +4,9 @@ export default function Header() {
   return (
     <a href="/">
       <header>
-        <span>Northcoders News </span>
-        <span id="NC-Logo">^</span>
+        <h2>
+          Northcoders News<span id="NC-Logo"> ^</span>
+        </h2>
       </header>
     </a>
   )
