@@ -1,0 +1,19 @@
+.user {
+  display: flex;
+  align-items: center;
+  display: flex;
+  justify-content: center; /* center horizontally */
+  align-items: center; /* center vertically (if container has height) */
+}
+
+.user img {
+  border-radius: 20%;
+  width: 6rem;
+  height: 4rem;
+  margin-right: 10px;
+}
+
+#trash-icon {
+  display: flex;
+  justify-content: right;
+}

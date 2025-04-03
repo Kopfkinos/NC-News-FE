@@ -55,8 +55,22 @@ function updateArticleVotes(articleId, newVote) {
       }
     )
     .catch((err) => {
-      return err
+      throw new Error()
     })
 }
 
-export { getArticles, getSingleArticle, getArticleComments, updateArticleVotes }
+function postComment(articleId, comment) {
+  const idString = articleId.toString()
+  const commentObj = {
+    username: "grumpy19",
+    body: comment,
+  }
+  const url = "https://nc-news-2dis.onrender.com/api/articles/" + idString
+
+  return apiArticlesClient.post(idString, commentObj).then(({ data: { comment } }) => {
+    const postedCommentBody = comment[0].body
+    return postedCommentBody
+  })
+}
+
+export { getArticles, getSingleArticle, getArticleComments, updateArticleVotes, postComment }

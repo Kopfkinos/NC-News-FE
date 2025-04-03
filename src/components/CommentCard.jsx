@@ -1,12 +1,12 @@
 import React from "react"
 import Card from "react-bootstrap/Card"
-import { thumbsUp, thumbsDown } from "../assets/bootStrapIcons"
+import { thumbsUp, thumbsDown, trashIcon } from "../assets/bootStrapIcons"
 import VoteTallyBox from "./VoteTallyBox"
 
 export default function CommentCard({ comment }) {
   const formattedTimeCode = new Date(comment.created_at).toUTCString().replace(":00 GMT", "")
   return (
-    <article className="parent">
+    <article>
       <Card>
         <Card.Header>{comment.author}</Card.Header>
         <Card.Body>
@@ -19,7 +19,10 @@ export default function CommentCard({ comment }) {
             <button id="dislike-button">{thumbsDown}</button>
           </div>
         </Card.Body>
-        <Card.Footer className="date">{formattedTimeCode}</Card.Footer>
+        <Card.Footer className="date">
+          {formattedTimeCode}
+          <span id="trash-icon">{trashIcon}</span>
+        </Card.Footer>
       </Card>
     </article>
   )
