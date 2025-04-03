@@ -6,6 +6,7 @@ import { getSingleArticle } from "../../utils/apiFuncs"
 import ArticleCard from "./ArticleCard"
 import ArticleComments from "./ArticleComments"
 import { Spinner } from "react-bootstrap"
+import CommentBox from "./CommentBox"
 
 export default function SingleArticle() {
   const [article, setArticle] = useState(null)

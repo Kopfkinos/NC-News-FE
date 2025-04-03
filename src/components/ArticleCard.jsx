@@ -25,7 +25,7 @@ export default function ArticleCard({ article }) {
               <span> {article.comment_count}</span>
             </button>
           </a>
-          {error ? <p id="err-msg">err ahoy! Try refreshing the page!</p> : null}
+          {error ? <p className="err-msg">Error ahoy! Try refreshing the page!</p> : null}
         </Card.Body>
         <Card.Footer className="date">{formattedTimeCode}</Card.Footer>
       </Card>
