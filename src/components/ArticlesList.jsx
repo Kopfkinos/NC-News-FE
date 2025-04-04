@@ -1,9 +1,9 @@
 import React from "react"
 import ArticleCard from "./ArticleCard"
-import Spinner from "react-bootstrap/Spinner"
 import { getArticles } from "../../utils/apiFuncs"
 import useApiFunction from "../../utils/useApiRequest"
 import { useEffect, useState } from "react"
+import NCSpinner from "./NCSpinner"
 
 export default function ArticlesList() {
   const [articles, setArticles] = useState([])
@@ -20,11 +20,7 @@ export default function ArticlesList() {
   // const [data, isLoading, error] = useApiFunction(getArticles)
 
   if (isLoading) {
-    return (
-      <div className="parent">
-        <Spinner className="spinner" animation="border" variant="danger" />
-      </div>
-    )
+    return <NCSpinner />
   } else {
     return (
       <div>

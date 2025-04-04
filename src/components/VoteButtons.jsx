@@ -1,28 +1,37 @@
 import React, { use, useState } from "react"
 import { thumbsUp } from "../assets/bootStrapIcons"
 import { thumbsDown } from "../assets/bootStrapIcons"
-import { updateArticleVotes } from "../../utils/apiFuncs"
-import Spinner from "react-bootstrap/Spinner"
+import { updateArticleVotes, updateCommentVotes } from "../../utils/apiFuncs"
 import VoteTallyBox from "./VoteTallyBox"
 
-export default function ({ article, error, setError }) {
-  const [updatedVotes, setupdatedVotes] = useState(article.votes)
+export default function ({ article, comment, error, setError }) {
+  const [updatedVotes, setUpdatedVotes] = useState(article ? article.votes : comment.votes)
+
   const [isLoading, setIsLoading] = useState(false)
   const [isButtonDisabled, setIsButtonDisabled] = useState(false)
 
-  function handleLikeClick(vote) {
+  function handleLikeClick(newVote) {
     setIsLoading(true)
     setIsButtonDisabled(true)
-    updateArticleVotes(article.article_id, vote)
-      .then((votes) => {
-        setupdatedVotes(votes)
+    if (article) {
+      updateArticleVotes(article.article_id, newVote)
+        .then((votes) => {
+          setUpdatedVotes(votes)
+          setIsLoading(false)
+          setIsButtonDisabled(false)
+        })
+        .catch((err) => {
+          setIsButtonDisabled(true)
+          setError(err)
+        })
+    }
+    if (comment) {
+      updateCommentVotes(comment.comment_id, newVote).then((votes) => {
+        setUpdatedVotes(votes)
         setIsLoading(false)
         setIsButtonDisabled(false)
       })
-      .catch((err) => {
-        setIsButtonDisabled(true)
-        setError(err)
-      })
+    }
   }
 
   return (
