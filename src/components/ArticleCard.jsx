@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import Card from "react-bootstrap/Card"
 import { commentIcon, thumbsDown, thumbsUp } from "../assets/bootStrapIcons"
-import Votes from "./VoteButtons"
+import VoteButtons from "./VoteButtons"
 
 export default function ArticleCard({ article }) {
   const [error, setError] = useState(null)
@@ -18,7 +18,7 @@ export default function ArticleCard({ article }) {
           </a>
           <Card.Text className="text-secondary">by {article.author}</Card.Text>
           <Card.Text>{article.body}</Card.Text>
-          <Votes article={article} error={error} setError={setError} />
+          <VoteButtons article={article} error={error} setError={setError} />
           <a href={article.article_id}>
             <button id="comments-button">
               {commentIcon}

@@ -59,18 +59,61 @@ function updateArticleVotes(articleId, newVote) {
     })
 }
 
-function postComment(articleId, comment) {
+function postComment(articleId, user, comment) {
   const idString = articleId.toString()
   const commentObj = {
-    username: "grumpy19",
+    username: user,
     body: comment,
   }
-  const url = "https://nc-news-2dis.onrender.com/api/articles/" + idString
 
-  return apiArticlesClient.post(idString, commentObj).then(({ data: { comment } }) => {
-    const postedCommentBody = comment[0].body
-    return postedCommentBody
-  })
+  return apiArticlesClient
+    .post(idString, commentObj)
+    .then(({ data: { comment } }) => {
+      throw new Error()
+    })
+    .catch((err) => {
+      return err
+    })
 }
 
-export { getArticles, getSingleArticle, getArticleComments, updateArticleVotes, postComment }
+const apiCommentsClient = axios.create({
+  baseURL: "https://nc-news-2dis.onrender.com/api/comments/",
+})
+
+function deleteComment(commentId) {
+  const commentIdString = commentId.toString()
+  return apiCommentsClient
+    .delete(commentIdString)
+    .then(() => {
+      return
+    })
+    .catch((err) => {
+      throw new Error()
+    })
+}
+
+function updateCommentVotes(commentId, newVote) {
+  const voteObj = {
+    inc_votes: newVote,
+  }
+  const commentIdString = commentId.toString()
+  return apiCommentsClient.patch(commentIdString, voteObj).then(
+    ({
+      data: {
+        updatedComment: { votes },
+      },
+    }) => {
+      return votes
+    }
+  )
+}
+
+export {
+  getArticles,
+  getSingleArticle,
+  getArticleComments,
+  updateArticleVotes,
+  postComment,
+  deleteComment,
+  updateCommentVotes,
+}

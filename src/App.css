@@ -85,3 +85,7 @@ a:active {
   padding-bottom: 0em;
   font-size: 0.8rem;
 }
+
+#NC-Spinner {
+  margin: 1rem;
+}
