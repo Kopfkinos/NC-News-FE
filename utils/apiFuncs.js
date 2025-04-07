@@ -4,9 +4,9 @@ const apiArticlesClient = axios.create({
   baseURL: "https://nc-news-2dis.onrender.com/api/articles",
 })
 
-function getArticles() {
+function getArticles(sortBy, topic) {
   return apiArticlesClient
-    .get("")
+    .get("", { params: { topic: topic, sort_by: sortBy } })
     .then((data) => {
       return data
     })
@@ -108,6 +108,23 @@ function updateCommentVotes(commentId, newVote) {
   )
 }
 
+const apiUsersClient = axios.create({
+  baseURL: "https://nc-news-2dis.onrender.com/api/users/",
+})
+
+function getUserData(username) {
+  return apiUsersClient.get(`${username}`).then(({ data }) => {
+    return data.user
+  })
+}
+
+function getTopics() {
+  return axios.get("https://nc-news-2dis.onrender.com/api/topics").then(({ data: { topics } }) => {
+    return topics
+  })
+  return
+}
+
 export {
   getArticles,
   getSingleArticle,
@@ -116,4 +133,6 @@ export {
   postComment,
   deleteComment,
   updateCommentVotes,
+  getUserData,
+  getTopics,
 }

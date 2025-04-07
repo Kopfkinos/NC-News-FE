@@ -4,7 +4,8 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import Header from "./components/Header"
 import ArticlesList from "./components/ArticlesList"
 import SingleArticle from "./components/SingleArticle"
-import { Routes, Route } from "react-router-dom"
+import Topics from "./components/Topics"
+import { Navigate, Routes, Route } from "react-router-dom"
 
 function App() {
   return (
@@ -14,8 +15,10 @@ function App() {
       </header>
       <main>
         <Routes>
-          <Route path="/" element={<ArticlesList />}></Route>
-          <Route path="/:articleId" element={<SingleArticle />}></Route>
+          <Route path="/articles" element={<ArticlesList />} />
+          <Route path="/articles/:articleId" element={<SingleArticle />} />
+          <Route path="/topics" element={<Topics />} />
+          <Route path="*" element={<Navigate to="/articles" />} />
         </Routes>
       </main>
       <nav></nav>

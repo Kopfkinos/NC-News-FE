@@ -2,12 +2,15 @@ import React from "react"
 
 export default function Header() {
   return (
-    <a href="/">
-      <header>
+    <header>
+      <a href="/">
         <h2>
           Northcoders News<span id="NC-Logo"> ^</span>
         </h2>
-      </header>
-    </a>
+      </a>
+      <p>
+        <a href="/">Home </a> - <a href="/topics">Topics</a>
+      </p>
+    </header>
   )
 }

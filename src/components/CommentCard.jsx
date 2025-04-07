@@ -1,9 +1,9 @@
-import React, { useState, useContext } from "react"
+import React, { useState, useContext, useEffect } from "react"
 import { UserContext } from "./UserContext"
 import Card from "react-bootstrap/Card"
 import { thumbsUp, thumbsDown, trashIcon } from "../assets/bootStrapIcons"
 import VoteTallyBox from "./VoteTallyBox"
-import { deleteComment } from "../../utils/apiFuncs"
+import { deleteComment, getUserData } from "../../utils/apiFuncs"
 import VoteButtons from "./VoteButtons"
 import NCSpinner from "./NCSpinner"
 
@@ -11,6 +11,7 @@ export default function CommentCard({ comment, comments, setComments }) {
   const formattedTimeCode = new Date(comment.created_at).toUTCString().replace(":00 GMT", "")
   const { user, setUser } = useContext(UserContext)
   const [isLoading, setIsLoading] = useState(false)
+  const [userAvatar, setUserAvatar] = useState(null)
 
   const handleTrashClick = (event) => {
     setIsLoading(true)
@@ -24,14 +25,22 @@ export default function CommentCard({ comment, comments, setComments }) {
     })
   }
 
+  useEffect(() => {
+    getUserData(comment.author).then((user) => {
+      setUserAvatar(user.avatar_url)
+    }),
+      []
+  })
+
   return (
     <article>
       <Card>
         <Card.Header>{comment.author}</Card.Header>
         <Card.Body>
-          <blockquote className="blockquote mb-0">
-            <p>{comment.body}</p>
-          </blockquote>
+          <div className="comment-avatar-body-votes">
+            <img src={userAvatar} id="user-avatar" />
+            <blockquote className="blockquote mb-0">{comment.body}</blockquote>
+          </div>
           <div>
             <VoteButtons comment={comment} />
           </div>

@@ -11,7 +11,9 @@ root.render(
   <StrictMode>
     <UserProvider>
       <BrowserRouter>
-        <App />
+        <main className="background">
+          <App />
+        </main>
       </BrowserRouter>
     </UserProvider>
   </StrictMode>

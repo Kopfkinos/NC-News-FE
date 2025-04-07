@@ -1,16 +1,18 @@
-import React, { useState, useRef, useContext } from "react"
+import React, { useState, useRef, useContext, useEffect } from "react"
 import { UserContext } from "./UserContext"
 import Card from "react-bootstrap/Card"
 import "../NewCommentBox.css"
 import CurrentDateTime from "./CurrentDateTime"
-import { postComment } from "../../utils/apiFuncs"
+import { getUserData, postComment } from "../../utils/apiFuncs"
 import Spinner from "react-bootstrap/Spinner"
+import NCSpinner from "./NCSpinner"
 
 export default function NewCommentBox({ articleId, setComments, setNewCommentTrig }) {
   const { user, setUser } = useContext(UserContext)
   const [textInput, setTextInput] = useState("")
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState(null)
+  const [userAvatar, setUserAvatar] = useState(null)
 
   const onChange = (event) => {
     setTextInput(event.target.value)
@@ -37,6 +39,13 @@ export default function NewCommentBox({ articleId, setComments, setNewCommentTri
       })
   }
 
+  useEffect(() => {
+    getUserData(user).then((user) => {
+      setUserAvatar(user.avatar_url)
+    }),
+      []
+  })
+
   return (
     <>
       <article className="parent">
@@ -45,7 +54,8 @@ export default function NewCommentBox({ articleId, setComments, setNewCommentTri
           <Card.Body>
             <blockquote className="blockquote mb-0">
               <section className="user">
-                <img src="https://media1.tenor.com/m/lCKMvnxfzlAAAAAd/knuckles-the-echidna-sonic-frontiers.gif" />
+                {userAvatar ? <img src={userAvatar} /> : <NCSpinner />}
+
                 <form>
                   <textarea onChange={onChange} value={textInput}></textarea>
                 </form>
