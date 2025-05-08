@@ -2,6 +2,10 @@
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.background {
+  background-image: linear-gradient(to bottom right, white, rgb(253, 233, 233));
+}
+
 header {
   margin: 10px;
   height: 10 vh;
@@ -88,4 +92,29 @@ a:active {
 
 #NC-Spinner {
   margin: 1rem;
+}
+
+.comment-avatar-body-votes {
+  display: flex;
+}
+
+#user-avatar {
+  width: 100px;
+  height: 90px;
+  border-radius: 50%;
+  margin: 5px;
+}
+
+.topic-cards {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: last baseline;
+}
+
+.topic-card-image {
+  height: 250px;
+}
+
+.article-card {
+  margin: 2rem;
 }

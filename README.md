@@ -1,12 +1,42 @@
-# React + Vite
+# Red Caret News Front End
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- What Is This Project?
 
-Currently, two official plugins are available:
+This project is a simple frontend interface designed to give me practical experience in building a brower.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This API replicates the functionality of a simple news site, responding with data on users, articles, topics and comments from a database I have seeded.
 
-## Expanding the ESLint configuration
+- Live Version
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+The live version has been deployed via ... and can be found here:
+...
+
+- Backend Repo
+
+A live version of the backend can be found here:
+https://nc-news-2dis.onrender.com/
+
+The repo for the backend can be found here:
+https://github.com/Kopfkinos/NC-News
+
+- How to Run This Repo Locally
+
+Minimum Node version required to run locally: 23.6.
+
+Enter the following commands into your terminal to get this project running on your system locally.
+
+1. Clone this repo to your system:
+
+```bash
+git clone https://github.com/Kopfkinos/NC-News-FE.git
+```
+
+2. Install dependencies:
+
+```bash
+npm install
+```
+
+---
+
+This portfolio project was created as part of a Digital Skills Bootcamp in Software Engineering provided by [Northcoders](https://northcoders.com/)
