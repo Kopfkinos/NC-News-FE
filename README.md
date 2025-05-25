@@ -12,7 +12,7 @@ I also practiced routing with React Router. This project served as a hands-on wa
 
 - Live Version
 
-The live version has been deployed via Netlify and can be found here: https://red-caret-news.netlify.app/articles
+The live version has been deployed via Netlify and can be found here: https://red-caret-news.netlify.app/
 
 - Backend Repo
 
